@@ -1,4 +1,4 @@
-/*** Object with any string property ***/
+/*** Example 1. Object with any string property ***/
 interface Names {
   [id: string]: string
 }
@@ -7,7 +7,7 @@ const colors: Names = {
   'dc3z42': 'John'
 };
 
-/***  Object with all properties from enum. Mapped Type ***/
+/*** Example 2. Object with all properties from enum. Mapped Type ***/
 enum Theme {
   dark = 'dark',
   light = 'light'
@@ -22,7 +22,7 @@ const themeLogos: ThemeLogos = {
   [Theme.light]: './light-logo.png' 
 };
 
-/***  Object with properties from enum. Mapped Type ***/
+/*** Example 3. Object with properties from enum. Mapped Type ***/
 enum Bird {
   eagle = 'eagle',
   dove = 'dove',
@@ -38,14 +38,14 @@ const birdLifeSpan: BirdLifeSpan = {
   [Bird.eagle]: '10-20 years'
 };
 
-// Generic
+/*** Example 4. Generic ***/
 function identity<T>(val: T): T {
   return val;
 }
 
 identity<number>(10);
 
-// Generic match some interface
+/*** Example 5. Generic match some interface ***/
 interface Pet {
   name: string
 }
@@ -62,7 +62,16 @@ function getName<T extends Pet>(val: T): string {
 getName<Dog>({name: 'Bark', age: 10});
 getName<Dog>({name: 'Bark', age: 10});
 
-// Function with error throw
+/*** Example 6. Function with error throw ***/
 function throwError(): never {
   throw Error('Data is not valid')
 }
+
+/*** Example 7. Remove from union ***/
+
+type Animals = 'Dog' | 'Cat' | 'Fish' | 'Bird' | 'Butterfly';
+
+type RemoveWhoCanFly<T> = T extends 'Bird' | 'Butterfly' ? never : T;
+type CannotFly = RemoveWhoCanFly<Animals>;
+
+type CannotFlyWithExclude = Exclude<Animals, 'Bird' | 'Butterfly'>
