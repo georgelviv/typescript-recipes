@@ -97,9 +97,23 @@ type AppEvent = LogInEvent | LogOutEvent;
 
 const sendEvent = <Type extends AppEvent['type']>(
   ...args: Extract<AppEvent, {type: Type}> extends { payload: infer TPayload }
-  ? [Type, TPayload]
+  ? [type: Type, payload: TPayload]
   : [Type]
 ) => {}
 
 sendEvent('login', {email: 'email'})
 sendEvent('logout')
+
+/*** Example 10. Globals ***/
+// File should be module
+export {};
+
+declare global {
+  interface State {
+    stage: 'init' | 'ready'
+  }
+}
+
+const currentState: State = {
+  stage: 'init'
+};
