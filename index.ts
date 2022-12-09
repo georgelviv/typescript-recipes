@@ -117,3 +117,19 @@ declare global {
 const currentState: State = {
   stage: 'init'
 };
+
+
+/*** Example 11. Get generic property ***/
+function sortByProperty<T, K extends keyof T>(list: T[], key: K): T[] {
+  return list.sort((a: T, b: T) => {
+    return Number(a[key]) - Number(b[key]);
+  })
+}
+
+const sortedList = sortByProperty([{
+  height: 10,
+  width: 10
+}, {
+  height: 20,
+  width: 20
+}], 'height')
