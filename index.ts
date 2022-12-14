@@ -132,4 +132,9 @@ const sortedList = sortByProperty([{
 }, {
   height: 20,
   width: 20
-}], 'height')
+}], 'height');
+
+/*** Example 12. String validation ***/
+type Command = Lowercase<`/${string}`>;
+
+const command: Command = '/invite';
