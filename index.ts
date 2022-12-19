@@ -138,3 +138,15 @@ const sortedList = sortByProperty([{
 type Command = Lowercase<`/${string}`>;
 
 const command: Command = '/invite';
+
+/*** Example 13. Function overloading ***/
+function getDate(): Date;
+function getDate(time: number | string): Date;
+function getDate(...args: (string|number)[]): Date {
+  if (args[0] === undefined) {
+    return new Date()
+  } else {
+    return new Date(args[0]);
+  }
+}
+
