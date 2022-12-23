@@ -150,3 +150,24 @@ function getDate(...args: (string|number)[]): Date {
   }
 }
 
+getDate();
+
+
+/*** Example 14. Second key in generic ***/
+
+function getSecondDeepValue<T, AKey extends keyof T, BKey extends keyof T[AKey]>(obj: T, keyA: AKey, keyB: BKey) {
+  return obj[keyA][keyB];
+}
+
+const info = {
+  a: {
+    b: 'a.b',
+    c: 'a.c'
+  },
+  b: {
+    a: 'b.a',
+    d: 'b.d'
+  }
+}
+
+getSecondDeepValue(info, 'a', 'b');
