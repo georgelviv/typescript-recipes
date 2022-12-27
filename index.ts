@@ -154,7 +154,6 @@ getDate();
 
 
 /*** Example 14. Second key in generic ***/
-
 function getSecondDeepValue<T, AKey extends keyof T, BKey extends keyof T[AKey]>(obj: T, keyA: AKey, keyB: BKey) {
   return obj[keyA][keyB];
 }
@@ -171,3 +170,32 @@ const info = {
 }
 
 getSecondDeepValue(info, 'a', 'b');
+
+/*** Example 15. any vs unknown assertion and narrowing ***/
+interface User {
+  name: string;
+}
+
+const userResponse: User = {
+  name: 'John'
+};
+let anyResponse: any = userResponse
+let unknownResponse: unknown = userResponse
+
+// next line will trigger error without narrowing
+// unknownResponse.name 
+anyResponse.name
+if (isUsersCollection(unknownResponse)) {
+  unknownResponse.name
+}
+
+if (isUsersCollection(anyResponse)) {
+  anyResponse.name
+}
+
+function isUsersCollection(obj: unknown): obj is User {
+  if (obj && typeof obj === 'object') {
+    return 'name' in obj;
+  }
+  return false;
+}
