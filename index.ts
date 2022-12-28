@@ -199,3 +199,16 @@ function isUsersCollection(obj: unknown): obj is User {
   }
   return false;
 }
+
+/*** Example 16. Assertion function ***/
+
+function toUpperCase(str: unknown): string {
+  isString(str);
+  return str.toUpperCase();
+}
+
+function isString(val: any): asserts val is string {
+  if (typeof val !== 'string') {
+    throw new Error('Not a string');
+  }
+}
