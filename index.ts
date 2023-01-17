@@ -201,7 +201,6 @@ function isUsersCollection(obj: unknown): obj is User {
 }
 
 /*** Example 16. Assertion function ***/
-
 function toUpperCase(str: unknown): string {
   isString(str);
   return str.toUpperCase();
@@ -212,3 +211,10 @@ function isString(val: any): asserts val is string {
     throw new Error('Not a string');
   }
 }
+
+/*** Example 17. Get promise return type ***/
+function fetchData(): Promise<string> {
+  return new Promise(resolve => resolve('data'))
+}
+
+type fetchDataResponse = Awaited<ReturnType<typeof fetchData>>;
