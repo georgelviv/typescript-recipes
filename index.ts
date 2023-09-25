@@ -1,24 +1,10 @@
-
-/*** Example 5. Function with error throw ***/
-function throwError(): never {
-  throw Error('Data is not valid')
-}
-
-/*** Example 6. Remove from union ***/
-type Animals = 'Dog' | 'Cat' | 'Fish' | 'Bird' | 'Butterfly';
-
-type RemoveWhoCanFly<T> = T extends 'Bird' | 'Butterfly' ? never : T;
-type CannotFly = RemoveWhoCanFly<Animals>;
-
-type CannotFlyWithExclude = Exclude<Animals, 'Bird' | 'Butterfly'>;
-
-/*** Example 7. String union autocomplete ***/
+/*** Example 8. String union autocomplete ***/
 type LooseAutocomplete<T extends string> = T | Omit<string, T>;
 type Color = LooseAutocomplete<'Red' | 'Blue'>;
 
 const red: Color = 'Red';
 
-/*** Example 8. Conditional arguments ***/
+/*** Example 9. Conditional arguments ***/
 type LogInEvent = {
   type: 'login',
   payload: {
@@ -41,7 +27,7 @@ const sendEvent = <Type extends AppEvent['type']>(
 sendEvent('login', {email: 'email'})
 sendEvent('logout')
 
-/*** Example 9. Globals ***/
+/*** Example 10. Globals ***/
 // File should be module
 export {};
 
@@ -56,7 +42,7 @@ const currentState: State = {
 };
 
 
-/*** Example 10. Get generic property ***/
+/*** Example 11. Get generic property ***/
 function sortByProperty<T, K extends keyof T>(list: T[], key: K): T[] {
   return list.sort((a: T, b: T) => {
     return Number(a[key]) - Number(b[key]);
@@ -71,12 +57,12 @@ const sortedList = sortByProperty([{
   width: 20
 }], 'height');
 
-/*** Example 11. String validation ***/
+/*** Example 12. String validation ***/
 type Command = Lowercase<`/${string}`>;
 
 const command: Command = '/invite';
 
-/*** Example 12. Function overloading ***/
+/*** Example 13. Function overloading ***/
 function getDate(): Date;
 function getDate(time: number | string): Date;
 function getDate(...args: (string|number)[]): Date {
@@ -90,7 +76,7 @@ function getDate(...args: (string|number)[]): Date {
 getDate();
 
 
-/*** Example 13. Second key in generic ***/
+/*** Example 14. Second key in generic ***/
 function getSecondDeepValue<T, AKey extends keyof T, BKey extends keyof T[AKey]>(obj: T, keyA: AKey, keyB: BKey) {
   return obj[keyA][keyB];
 }
@@ -108,7 +94,7 @@ const info = {
 
 getSecondDeepValue(info, 'a', 'b');
 
-/*** Example 14. any vs unknown assertion and narrowing ***/
+/*** Example 15. any vs unknown assertion and narrowing ***/
 interface User {
   name: string;
 }
@@ -137,7 +123,7 @@ function isUsersCollection(obj: unknown): obj is User {
   return false;
 }
 
-/*** Example 15. Assertion function ***/
+/*** Example 16. Assertion function ***/
 function toUpperCase(str: unknown): string {
   isString(str);
   return str.toUpperCase();
@@ -149,7 +135,7 @@ function isString(val: any): asserts val is string {
   }
 }
 
-/*** Example 16. Get promise return type ***/
+/*** Example 17. Get promise return type ***/
 function fetchData(): Promise<string> {
   return new Promise(resolve => resolve('data'))
 }
