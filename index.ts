@@ -1,12 +1,3 @@
-/*** Example 1. Object with any string property ***/
-interface Names {
-  [id: string]: string
-}
-
-const colors: Names = {
-  'dc3z42': 'John'
-};
-
 /*** Example 2. Object with all properties from enum. Mapped Type ***/
 enum Theme {
   dark = 'dark',
