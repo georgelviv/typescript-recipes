@@ -1,4 +1,4 @@
-/*** Example 3. Generic ***/
+/*** Generic ***/
 
 function identity<T>(val: T): T {
   return val;

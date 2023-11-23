@@ -1,4 +1,4 @@
-/*** Example 6. Remove from union ***/
+/*** Remove from union ***/
 type Animals = 'Dog' | 'Cat' | 'Fish' | 'Bird' | 'Butterfly';
 
 type RemoveWhoCanFly<T> = T extends 'Bird' | 'Butterfly' ? never : T;

@@ -3,13 +3,16 @@
 Some typescript recipes
 
 ## Content
-1. [Object with any string property](recipes/any-string-property.ts)
-2. [Object with properties from enum. Mapped Type](recipes/all-properties-from-enum.ts)
-3. [Generic](recipes/generic.ts)
-4. [Generic match some interface](recipes/generic-match-interface.ts)
-5. [Function with never](recipes/never.ts)
-6. [Exclude from union](recipes/exclude-from-union.ts)
-7. [Additional properties based on boolean property](recipes/additonal-properties-based-on-bool-prop.ts)
+- [Object with any string property](recipes/any-string-property.ts)
+- [Object with properties from enum. Mapped Type](recipes/all-properties-from-enum.ts)
+- [Generic](recipes/generic.ts)
+- [Generic match some interface](recipes/generic-match-interface.ts)
+- [Function with never](recipes/never.ts)
+- [Exclude from union](recipes/exclude-from-union.ts)
+- [Additional properties based on boolean property](recipes/additonal-properties-based-on-bool-prop.ts)
+- [String union autocomplete](recipes/string-union-autocomplate.ts)
+- [Get promise return type](recipes/get-promise-return-type.ts) 
+- [New interface from some properties of the other interface](recipes/new-interface-from-some-properties-of-other-interface.ts)
 
 ## Configs
 

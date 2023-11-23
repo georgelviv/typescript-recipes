@@ -1,4 +1,4 @@
-/*** Example 2. Object with properties from enum. Mapped Type ***/
+/*** Object with properties from enum. Mapped Type ***/
 enum Theme {
   dark = 'dark',
   light = 'light'

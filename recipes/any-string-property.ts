@@ -1,4 +1,4 @@
-/*** Example 1. Object with any string property ***/
+/*** Object with any string property ***/
 
 interface Names {
   [id: string]: string

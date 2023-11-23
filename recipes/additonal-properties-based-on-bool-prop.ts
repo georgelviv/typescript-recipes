@@ -1,4 +1,4 @@
-/*** Example 7. Additional properties based on boolean property ***/
+/*** Additional properties based on boolean property ***/
 
 interface BaseItem {
   name: string;

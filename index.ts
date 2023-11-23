@@ -1,31 +1,4 @@
-/*** Example 8. String union autocomplete ***/
-type LooseAutocomplete<T extends string> = T | Omit<string, T>;
-type Color = LooseAutocomplete<'Red' | 'Blue'>;
 
-const red: Color = 'Red';
-
-/*** Example 9. Conditional arguments ***/
-type LogInEvent = {
-  type: 'login',
-  payload: {
-    email: string
-  }
-}
-
-type LogOutEvent = {
-  type: 'logout'
-}
-
-type AppEvent = LogInEvent | LogOutEvent;
-
-const sendEvent = <Type extends AppEvent['type']>(
-  ...args: Extract<AppEvent, {type: Type}> extends { payload: infer TPayload }
-  ? [type: Type, payload: TPayload]
-  : [Type]
-) => {}
-
-sendEvent('login', {email: 'email'})
-sendEvent('logout')
 
 /*** Example 10. Globals ***/
 // File should be module
@@ -134,10 +107,3 @@ function isString(val: any): asserts val is string {
     throw new Error('Not a string');
   }
 }
-
-/*** Example 17. Get promise return type ***/
-function fetchData(): Promise<string> {
-  return new Promise(resolve => resolve('data'))
-}
-
-type fetchDataResponse = Awaited<ReturnType<typeof fetchData>>;

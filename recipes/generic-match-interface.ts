@@ -1,4 +1,4 @@
-/*** Example 4. Generic match some interface ***/
+/*** Generic match some interface ***/
 interface Pet {
   name: string
 }
